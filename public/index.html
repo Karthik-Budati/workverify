@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorkVerify</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="container mx-auto p-4 max-w-3xl">
+    <h1 class="text-3xl font-bold text-center mb-6 text-blue-600">WorkVerify</h1>
+
+    <!-- Navigation Buttons -->
+    <div class="flex flex-wrap justify-center gap-3 mb-6">
+      <button id="show-verify" class="form-nav-btn bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">Verify Employment</button>
+      <button id="show-add-profile" class="form-nav-btn bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">Add Profile</button>
+      <button id="show-validate-proof" class="form-nav-btn bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Validate Proof</button>
+    </div>
+
+    <!-- Verify Employment Form -->
+    <div id="verify-section" class="form-section mb-8">
+      <h2 class="text-2xl font-semibold mb-4 text-gray-800">Verify Employment</h2>
+      <form id="verify-form" class="bg-white p-6 rounded-lg shadow-md">
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700 font-medium">Name</label>
+          <input type="text" id="name" name="name" class="w-full p-2 border rounded focus:ring-2 focus:ring-green-400" required>
+        </div>
+        <div class="mb-4">
+          <label for="company" class="block text-gray-700 font-medium">Company</label>
+          <input type="text" id="company" name="company" class="w-full p-2 border rounded focus:ring-2 focus:ring-green-400" required>
+        </div>
+        <div class="mb-4">
+          <label for="title" class="block text-gray-700 font-medium">Title</label>
+          <input type="text" id="title" name="title" class="w-full p-2 border rounded focus:ring-2 focus:ring-green-400" required>
+        </div>
+        <div class="mb-4">
+          <label for="start_year" class="block text-gray-700 font-medium">Start Year</label>
+          <input type="number" id="start_year" name="start_year" class="w-full p-2 border rounded focus:ring-2 focus:ring-green-400" required>
+        </div>
+        <div class="mb-4">
+          <label for="end_year" class="block text-gray-700 font-medium">End Year (optional)</label>
+          <input type="number" id="end_year" name="end_year" class="w-full p-2 border rounded focus:ring-2 focus:ring-green-400">
+        </div>
+        <div class="flex gap-2">
+          <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">Verify Employment</button>
+          <button type="button" id="clear-verify" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition">Clear</button>
+        </div>
+      </form>
+      <div id="verify-result" class="result-section mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200 hidden"></div>
+    </div>
+
+    <!-- Add Profile Form -->
+    <div id="add-profile-section" class="form-section mb-8 hidden">
+      <h2 class="text-2xl font-semibold mb-4 text-gray-800">Add New Profile</h2>
+      <form id="add-profile-form" class="bg-white p-6 rounded-lg shadow-md">
+        <div class="mb-4">
+          <label for="add_name" class="block text-gray-700 font-medium">Name</label>
+          <input type="text" id="add_name" name="name" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" required>
+        </div>
+        <div class="mb-4">
+          <label for="add_company" class="block text-gray-700 font-medium">Company</label>
+          <input type="text" id="add_company" name="company" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" required>
+        </div>
+        <div class="mb-4">
+          <label for="add_title" class="block text-gray-700 font-medium">Title</label>
+          <input type="text" id="add_title" name="title" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" required>
+        </div>
+        <div class="mb-4">
+          <label for="add_start_year" class="block text-gray-700 font-medium">Start Year</label>
+          <input type="number" id="add_start_year" name="start_year" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400" required>
+        </div>
+        <div class="mb-4">
+          <label for="add_end_year" class="block text-gray-700 font-medium">End Year (optional)</label>
+          <input type="number" id="add_end_year" name="end_year" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div class="mb-4">
+          <label for="add_profile_url" class="block text-gray-700 font-medium">Profile URL (optional)</label>
+          <input type="url" id="add_profile_url" name="profile_url" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400">
+        </div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">Save Profile</button>
+      </form>
+      <div id="add-profile-result" class="result-section mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200 hidden"></div>
+    </div>
+
+    <!-- Validate Proof Form -->
+    <div id="validate-proof-section" class="form-section mb-8 hidden">
+      <h2 class="text-2xl font-semibold mb-4 text-gray-800">Validate Proof</h2>
+      <form id="validate-proof-form" class="bg-white p-6 rounded-lg shadow-md">
+        <div class="mb-4">
+          <label for="claim" class="block text-gray-700 font-medium">Claim JSON</label>
+          <textarea id="claim" name="claim" class="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" rows="4" required></textarea>
+        </div>
+        <div class="mb-4">
+          <label for="signature" class="block text-gray-700 font-medium">Signature</label>
+          <textarea id="signature" name="signature" class="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" rows="4" required></textarea>
+        </div>
+        <div class="mb-4">
+          <label for="publicKey" class="block text-gray-700 font-medium">Public Key</label>
+          <textarea id="publicKey" name="publicKey" class="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Validate Proof</button>
+      </form>
+      <div id="validate-proof-result" class="result-section mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200 hidden"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

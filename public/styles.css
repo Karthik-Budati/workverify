@@ -1,0 +1,78 @@
+/* Custom styles for responsiveness and interactivity */
+.container {
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 2rem;
+  }
+}
+
+.form-section {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-section.hidden {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+}
+
+.form-nav-btn {
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.form-nav-btn:hover {
+  transform: scale(1.05);
+}
+
+.form-nav-btn.active {
+  background-color: #1a202c !important;
+  transform: scale(1);
+}
+
+input, textarea {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+}
+
+.result-section {
+  transition: opacity 0.3s ease;
+}
+
+.result-section.hidden {
+  opacity: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .form-nav-btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  form {
+    padding: 1rem;
+  }
+}
